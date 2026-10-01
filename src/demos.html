@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Customers · Card CRM</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top"><h1>Card CRM · Demo customers</h1><span class="spacer"></span><a href="admin.html">Edit mock data</a></header>
+  <div class="landing"><div class="panel"><h2>Click an issuer to open the customer as that channel</h2>
+    <table><thead><tr><th>Customer</th><th>Email</th><th>Open as</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+  <script src="data.js"></script>
+  <script src="store.js"></script>
+  <script>
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    document.getElementById("rows").innerHTML = DB.data.customers.map((c) => {
+      const link = (ch, color) => `<a style="color:${color}" href="index.html?phone=${encodeURIComponent(c.phone)}&channel=${ch}">${ch}</a>`;
+      const issuers = [...new Set(c.cards.map((x) => x.issuer))].filter((k) => ISSUERS[k]);
+      return `<tr><td><b>${esc(c.name)}</b><br><span style="color:var(--muted)">${esc(c.phone)}</span></td><td>${esc(c.email)}</td>
+        <td>${issuers.map((k) => link(k, ISSUERS[k].color)).join("")}${link("ALL", "var(--text)")}</td></tr>`;
+    }).join("");
+  </script>
+</body>
+</html>

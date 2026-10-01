@@ -19,20 +19,17 @@ function parseChannels(raw) {
   }
   return { issuers, all: false, bad };
 }
-// Match on the last 9 digits so +971 50 123 4567, 0501234567 and 971501234567 all resolve.
-const findCustomer = (phone) => { const d = digits(phone).slice(-9); return d.length >= 7 ? CUSTOMERS.find((c) => digits(c.phone).slice(-9) === d) : null; };
+// `phone` may be a phone number or an email. Phones match on the last 9 digits so
+// +971 50 123 4567, 0501234567 and 971501234567 all resolve; emails match case-insensitively.
+const findCustomer = (id) => {
+  const v = String(id || "").trim();
+  if (v.includes("@")) return DB.data.customers.find((c) => (c.email || "").toLowerCase() === v.toLowerCase());
+  const d = digits(v).slice(-9);
+  return d.length >= 7 ? DB.data.customers.find((c) => digits(c.phone).slice(-9) === d) : null;
+};
 
-// ---- interaction store: seeded history + anything logged in this browser ----
-function seedInteractions() {
-  return SEED_INTERACTIONS.map((s, i) => {
-    const d = new Date(); d.setDate(d.getDate() - s.daysAgo); d.setHours(s.hour, (i * 7) % 60, 0, 0);
-    const { daysAgo, hour, ...rest } = s;
-    return { id: "seed-" + i, ts: d.toISOString(), ...rest };
-  });
-}
-function loadLogged() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch { return []; } }
-function saveLogged(list) { try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); } catch {} }
-const allInteractions = () => [...seedInteractions(), ...loadLogged()].sort((a, b) => b.ts.localeCompare(a.ts));
+// ---- interaction store (see store.js) ----
+const allInteractions = () => [...DB.data.interactions].sort((a, b) => b.ts.localeCompare(a.ts));
 
 // ---- rendering ----
 function statusBadge(status) {
@@ -87,28 +84,23 @@ function renderInteraction(i) {
 }
 
 function renderLanding(msg) {
-  const rows = CUSTOMERS.map((c) => {
-    const issuers = [...new Set(c.cards.map((x) => x.issuer))];
-    return `<tr><td><b>${esc(c.name)}</b><br><span class="meta" style="color:var(--muted)">${esc(c.phone)}</span></td>
-      <td>${issuers.map((k) => `<a style="color:${ISSUERS[k].color}" href="?phone=${encodeURIComponent(c.phone)}&channel=${k}">${k}</a>`).join("")}<a style="color:var(--text)" href="?phone=${encodeURIComponent(c.phone)}&channel=ALL">ALL</a></td></tr>`;
-  }).join("");
   document.title = "Card CRM";
   $app.innerHTML = `
   <header class="top"><h1>Card CRM</h1><span class="sub">Contact-centre customer view</span></header>
   <div class="landing">
     ${msg ? `<div class="panel" style="margin-bottom:20px;border-color:var(--bad)"><b>${msg}</b></div>` : ""}
-    <div class="panel" style="margin-bottom:20px">
+    <div class="panel">
       <h2>Look up a customer</h2>
       <form method="get">
-        <input name="phone" placeholder="Phone, e.g. +971501234567" required>
+        <input name="phone" placeholder="Phone or email, e.g. +971501234567" required>
         <input name="channel" list="chs" value="ALL" required placeholder="Manor,Valiant or ALL"><datalist id="chs"><option>ALL</option>${Object.keys(ISSUERS).map((k) => `<option>${k}</option>`).join("")}</datalist>
         <button>Open</button>
       </form>
       <p style="color:var(--muted);font-size:13px;margin-bottom:0">Normally the contact-centre softphone opens this page with
-      <code>?phone=…&amp;channel=Manor</code>. Channel can be one issuer, several comma-separated (<code>Manor,Valiant</code>) or <code>ALL</code>; only those issuers' cards and interactions are shown.</p>
+      <code>?phone=…&amp;channel=Manor</code> (the <code>phone</code> value can be a phone number or an email).
+      Channel can be one issuer, several comma-separated (<code>Manor,Valiant</code>) or <code>ALL</code>; only those issuers' cards and interactions are shown.</p>
     </div>
-    <div class="panel"><h2>Demo customers (click an issuer to open as that channel)</h2>
-      <table><thead><tr><th>Customer</th><th>Issuers held</th></tr></thead><tbody>${rows}</tbody></table></div>
+    ${msg ? "" : `<p style="text-align:center;font-size:13px"><a href="demos.html">Browse demo customers</a> · <a href="admin.html">Edit mock data</a></p>`}
   </div>`;
 }
 
@@ -174,9 +166,8 @@ function renderCustomer(cust, ch) {
     e.preventDefault();
     const f = Object.fromEntries(new FormData(form));
     try { localStorage.setItem("cardcrm.agent", f.agent); } catch {}
-    const list = loadLogged();
-    list.push({ id: "u-" + Date.now(), ts: new Date().toISOString(), phone: cust.phone, issuer: issuers[0], ...f });
-    saveLogged(list);
+    DB.data.interactions.push({ id: "u-" + Date.now(), ts: new Date().toISOString(), phone: cust.phone, issuer: issuers[0], ...f });
+    DB.save();
     renderCustomer(cust, ch);
   };
 }
@@ -188,6 +179,6 @@ function renderCustomer(cust, ch) {
   const ch = parseChannels(channel);
   if (!ch.issuers.length || ch.bad.length) return renderLanding(`Unknown or missing channel “${esc(ch.bad.join(", ") || channel || "")}”. Use ALL or one or more of: ${Object.keys(ISSUERS).join(", ")} (comma separated).`);
   const cust = findCustomer(phone);
-  if (!cust) return renderLanding(`No customer found for phone “${esc(phone || "")}”.`);
+  if (!cust) return renderLanding(`No customer found for “${esc(phone || "")}”.`);
   renderCustomer(cust, ch);
 })();
