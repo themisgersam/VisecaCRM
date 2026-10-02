@@ -8,8 +8,8 @@ const ISSUERS = {
 
 const CUSTOMERS = [
   {
-    id: "C-1001", name: "Aisha Rahman", phone: "+971501234567", email: "aisha.rahman@example.com",
-    dob: "1988-04-12", city: "Dubai", segment: "Premium", since: "2016-03-02", language: "English / Arabic",
+    id: "C-1001", name: "Sameer Misger", phone: "+919555594511", email: "misgersam@gmail.com",
+    dob: "1988-04-12", city: "Riyadh", segment: "Premium", since: "2016-03-02", language: "English / Arabic",
     cards: [
       { issuer: "Manor", product: "Manor Platinum Credit", network: "Visa", last4: "4821", type: "Credit", status: "Active", limit: 60000, balance: 18420.5, due: 2200, dueDate: "2026-10-18", expiry: "09/29", rewards: "24,300 pts" },
       { issuer: "Valiant", product: "Valiant Gold Credit", network: "Mastercard", last4: "7710", type: "Credit", status: "Active", limit: 25000, balance: 3150, due: 315, dueDate: "2026-10-22", expiry: "03/28", rewards: "6,120 miles" },
