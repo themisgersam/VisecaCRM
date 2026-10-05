@@ -8,7 +8,7 @@ const ISSUERS = {
 
 const CUSTOMERS = [
   {
-    id: "C-1001", name: "Sameer Misger", phone: "+919555594511", email: "misgersam@gmail.com",
+    id: "C-1001", name: "Tobi Braun", phone: "+12028666945", email: "obi.braun@sprinklr.com",
     dob: "1988-04-12", city: "Riyadh", segment: "Premium", since: "2016-03-02", language: "English / Arabic",
     cards: [
       { issuer: "Manor", product: "Manor Platinum Credit", network: "Visa", last4: "4821", type: "Credit", status: "Active", limit: 60000, balance: 18420.5, due: 2200, dueDate: "2026-10-18", expiry: "09/29", rewards: "24,300 pts" },
@@ -17,7 +17,7 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1002", name: "Omar Haddad", phone: "+971502345678", email: "omar.haddad@example.com",
+    id: "C-1002", name: "Sameer Misger", phone: "+919555594511", email: "misgersam@gmail.com",
     dob: "1979-11-30", city: "Abu Dhabi", segment: "Standard", since: "2019-07-19", language: "Arabic",
     cards: [
       { issuer: "Manor", product: "Manor Classic Debit", network: "Visa", last4: "1156", type: "Debit", status: "Active", limit: 15000, balance: 0, due: 0, dueDate: null, expiry: "06/28", rewards: "—" },
@@ -25,7 +25,7 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1003", name: "Priya Nair", phone: "+971503456789", email: "priya.nair@example.com",
+    id: "C-1003", name: "Mohamed Khaled", phone: "+201025266022", email: "mohamed.khaled@istnetworks.com",
     dob: "1992-02-08", city: "Sharjah", segment: "Standard", since: "2021-01-15", language: "English / Hindi",
     cards: [
       { issuer: "Valiant", product: "Valiant Platinum Credit", network: "Visa", last4: "6602", type: "Credit", status: "Active", limit: 40000, balance: 27800, due: 2780, dueDate: "2026-10-09", expiry: "08/28", rewards: "15,900 pts" },
@@ -33,7 +33,7 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1004", name: "Liam Carter", phone: "+971504567890", email: "liam.carter@example.com",
+    id: "C-1004", name: "Daniel Moreau", phone: "+971506789012", email: "daniel.moreau@example.com",
     dob: "1985-09-21", city: "Dubai", segment: "Premium", since: "2014-05-27", language: "English",
     cards: [
       { issuer: "Viesca", product: "Viesca Signature Credit", network: "Visa", last4: "5540", type: "Credit", status: "Active", limit: 90000, balance: 41200, due: 4120, dueDate: "2026-10-15", expiry: "12/29", rewards: "58,400 pts" },
@@ -47,7 +47,7 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1006", name: "Daniel Moreau", phone: "+971506789012", email: "daniel.moreau@example.com",
+    id: "C-1006", name: "Deepanshi Khanuja", phone: "+971504567890", email: "deepanshi.khanuja@tp.com",
     dob: "1976-12-03", city: "Dubai", segment: "Private", since: "2011-08-09", language: "English / French",
     cards: [
       { issuer: "Manor", product: "Manor Infinite Credit", network: "Visa", last4: "0007", type: "Credit", status: "Active", limit: 250000, balance: 96500, due: 9650, dueDate: "2026-10-20", expiry: "04/30", rewards: "212,000 pts" },
@@ -75,14 +75,14 @@ const CUSTOMERS = [
 
 // Seed interactions. `daysAgo` / `hour` are converted to real timestamps at load time.
 const SEED_INTERACTIONS = [
-  { phone: "+971501234567", issuer: "Manor",   channel: "Voice",    reason: "Statement query",       outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 3,  hour: 11, notes: "Customer asked about a duplicate charge of AED 189 at a restaurant. Raised dispute DSP-20931." },
-  { phone: "+971501234567", issuer: "Manor",   channel: "Chat",     reason: "Credit limit increase", outcome: "Escalated", agent: "Karim A.",  daysAgo: 12, hour: 15, notes: "Requested limit increase to AED 80,000. Escalated to credit team." },
-  { phone: "+971501234567", issuer: "Valiant", channel: "Voice",    reason: "Payment arrangement",   outcome: "Resolved",  agent: "Rami T.",   daysAgo: 6,  hour: 9,  notes: "Set up standing instruction for minimum due." },
-  { phone: "+971501234567", issuer: "Cumulus", channel: "Voice",    reason: "Block card",            outcome: "Resolved",  agent: "Lina M.",   daysAgo: 20, hour: 18, notes: "Card reported lost while travelling. Blocked; replacement not requested yet." },
-  { phone: "+971502345678", issuer: "Manor",   channel: "Voice",    reason: "PIN reset",             outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 1,  hour: 10, notes: "Debit card PIN reset via IVR hand-off." },
-  { phone: "+971502345678", issuer: "Manor",   channel: "Email",    reason: "Cashback query",        outcome: "Resolved",  agent: "Karim A.",  daysAgo: 25, hour: 13, notes: "Explained cashback cap of AED 500/month." },
-  { phone: "+971503456789", issuer: "Valiant", channel: "Voice",    reason: "Late fee waiver",       outcome: "Pending",   agent: "Rami T.",   daysAgo: 4,  hour: 16, notes: "Requested waiver of AED 250 late fee. Awaiting supervisor approval." },
-  { phone: "+971503456789", issuer: "Viesca",  channel: "WhatsApp", reason: "Card renewal",          outcome: "Pending",   agent: "Hind B.",   daysAgo: 9,  hour: 12, notes: "Card expired Aug 2026. Customer unsure if renewal is wanted." },
+  { phone: "+12028666945", issuer: "Manor",   channel: "Voice",    reason: "Statement query",       outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 3,  hour: 11, notes: "Customer asked about a duplicate charge of AED 189 at a restaurant. Raised dispute DSP-20931." },
+  { phone: "+12028666945", issuer: "Manor",   channel: "Chat",     reason: "Credit limit increase", outcome: "Escalated", agent: "Karim A.",  daysAgo: 12, hour: 15, notes: "Requested limit increase to AED 80,000. Escalated to credit team." },
+  { phone: "+12028666945", issuer: "Valiant", channel: "Voice",    reason: "Payment arrangement",   outcome: "Resolved",  agent: "Rami T.",   daysAgo: 6,  hour: 9,  notes: "Set up standing instruction for minimum due." },
+  { phone: "+12028666945", issuer: "Cumulus", channel: "Voice",    reason: "Block card",            outcome: "Resolved",  agent: "Lina M.",   daysAgo: 20, hour: 18, notes: "Card reported lost while travelling. Blocked; replacement not requested yet." },
+  { phone: "+919555594511", issuer: "Manor",   channel: "Voice",    reason: "PIN reset",             outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 1,  hour: 10, notes: "Debit card PIN reset via IVR hand-off." },
+  { phone: "+919555594511", issuer: "Manor",   channel: "Email",    reason: "Cashback query",        outcome: "Resolved",  agent: "Karim A.",  daysAgo: 25, hour: 13, notes: "Explained cashback cap of AED 500/month." },
+  { phone: "+201025266022", issuer: "Valiant", channel: "Voice",    reason: "Late fee waiver",       outcome: "Pending",   agent: "Rami T.",   daysAgo: 4,  hour: 16, notes: "Requested waiver of AED 250 late fee. Awaiting supervisor approval." },
+  { phone: "+201025266022", issuer: "Viesca",  channel: "WhatsApp", reason: "Card renewal",          outcome: "Pending",   agent: "Hind B.",   daysAgo: 9,  hour: 12, notes: "Card expired Aug 2026. Customer unsure if renewal is wanted." },
   { phone: "+971504567890", issuer: "Viesca",  channel: "Chat",     reason: "Travel notice",         outcome: "Resolved",  agent: "Hind B.",   daysAgo: 2,  hour: 8,  notes: "Travelling to UK 10-20 Oct. Travel flag added." },
   { phone: "+971505678901", issuer: "Cumulus", channel: "Voice",    reason: "Activate card",         outcome: "Resolved",  agent: "Lina M.",   daysAgo: 30, hour: 14, notes: "New card activated after identity verification." },
   { phone: "+971506789012", issuer: "Manor",   channel: "Voice",    reason: "Reward redemption",     outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 5,  hour: 17, notes: "Redeemed 40,000 pts for statement credit." },
