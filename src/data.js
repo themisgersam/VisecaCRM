@@ -8,7 +8,7 @@ const ISSUERS = {
 
 const CUSTOMERS = [
   {
-    id: "C-1001", name: "Tobi Braun", phone: "+12028666945", email: "obi.braun@sprinklr.com",
+    id: "C-1001", name: "Tobi Braun", phone: "+12028666945", email: "tobi.braun@sprinklr.com",
     dob: "1988-04-12", city: "Riyadh", segment: "Premium", since: "2016-03-02", language: "English / Arabic",
     cards: [
       { issuer: "Manor", product: "Manor Platinum Credit", network: "Visa", last4: "4821", type: "Credit", status: "Active", limit: 60000, balance: 18420.5, due: 2200, dueDate: "2026-10-18", expiry: "09/29", rewards: "24,300 pts" },
@@ -25,7 +25,14 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1003", name: "Mohamed Khaled", phone: "+201025266022", email: "mohamed.khaled@istnetworks.com",
+    id: "C-1003", name: "Mohamed Khaled", phone: "+34695930506", email: "mohamed.khaled@istnetworks.com",
+    dob: "1992-02-08", city: "Sharjah", segment: "Standard", since: "2021-01-15", language: "English / Hindi",
+    cards: [
+      { issuer: "Valiant", product: "Valiant Platinum Credit", network: "Visa", last4: "6602", type: "Credit", status: "Active", limit: 40000, balance: 27800, due: 2780, dueDate: "2026-10-09", expiry: "08/28", rewards: "15,900 pts" },
+      { issuer: "Viesca", product: "Viesca Everyday Credit", network: "Mastercard", last4: "2278", type: "Credit", status: "Expired", limit: 12000, balance: 0, due: 0, dueDate: null, expiry: "08/26", rewards: "—" },
+    ],
+  },{
+    id: "C-1003", name: "Mohamed Esawi", phone: "+971581804748", email: "mohamed.esawi@istnetworks.com",
     dob: "1992-02-08", city: "Sharjah", segment: "Standard", since: "2021-01-15", language: "English / Hindi",
     cards: [
       { issuer: "Valiant", product: "Valiant Platinum Credit", network: "Visa", last4: "6602", type: "Credit", status: "Active", limit: 40000, balance: 27800, due: 2780, dueDate: "2026-10-09", expiry: "08/28", rewards: "15,900 pts" },
@@ -89,5 +96,7 @@ const SEED_INTERACTIONS = [
   { phone: "+971506789012", issuer: "Cumulus", channel: "Voice",    reason: "Activate card",         outcome: "Follow-up", agent: "Lina M.",   daysAgo: 1,  hour: 19, notes: "Failed OTP twice. Customer to call back from registered mobile." },
   { phone: "+971506789012", issuer: "Valiant", channel: "Email",    reason: "Fee dispute",           outcome: "Resolved",  agent: "Rami T.",   daysAgo: 14, hour: 10, notes: "Annual fee reversed as a goodwill gesture." },
   { phone: "+971507890123", issuer: "Manor",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
+ { phone: "+971581804748", issuer: "Valiant", channel: "Email",    reason: "Fee dispute",           outcome: "Resolved",  agent: "Rami T.",   daysAgo: 14, hour: 10, notes: "Annual fee reversed as a goodwill gesture." },
+  { phone: "+971581804748", issuer: "Viesca",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
   { phone: "+971508901234", issuer: "Valiant", channel: "Voice",    reason: "Over-limit",            outcome: "Follow-up", agent: "Rami T.",   daysAgo: 1,  hour: 14, notes: "Account over limit and payment overdue. Promised payment by Friday." },
 ];
