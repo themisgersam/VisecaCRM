@@ -2,7 +2,7 @@
 const ISSUERS = {
   Manor:   { color: "#1f4e9c", tint: "#e8effa", tagline: "Manor Bank Cards" },
   Valiant: { color: "#8a1c2b", tint: "#f9e9eb", tagline: "Valiant Bank Cards" },
-  Viesca:  { color: "#0b7a5c", tint: "#e4f5ef", tagline: "Viesca Bank Cards" },
+  Viseca:  { color: "#0b7a5c", tint: "#e4f5ef", tagline: "Viseca Bank Cards" },
   Cumulus: { color: "#5b3fb5", tint: "#eee9fa", tagline: "Cumulus Bank Cards" },
 };
 
@@ -29,21 +29,21 @@ const CUSTOMERS = [
     dob: "1992-02-08", city: "Sharjah", segment: "Standard", since: "2021-01-15", language: "English / Hindi",
     cards: [
       { issuer: "Valiant", product: "Valiant Platinum Credit", network: "Visa", last4: "6602", type: "Credit", status: "Active", limit: 40000, balance: 27800, due: 2780, dueDate: "2026-10-09", expiry: "08/28", rewards: "15,900 pts" },
-      { issuer: "Viesca", product: "Viesca Everyday Credit", network: "Mastercard", last4: "2278", type: "Credit", status: "Expired", limit: 12000, balance: 0, due: 0, dueDate: null, expiry: "08/26", rewards: "—" },
+      { issuer: "Viseca", product: "Viseca Everyday Credit", network: "Mastercard", last4: "2278", type: "Credit", status: "Expired", limit: 12000, balance: 0, due: 0, dueDate: null, expiry: "08/26", rewards: "—" },
     ],
   },{
     id: "C-1003", name: "Mohamed Esawi", phone: "+971581804748", email: "mohamed.esawi@istnetworks.com",
     dob: "1992-02-08", city: "Sharjah", segment: "Standard", since: "2021-01-15", language: "English / Hindi",
     cards: [
       { issuer: "Valiant", product: "Valiant Platinum Credit", network: "Visa", last4: "6602", type: "Credit", status: "Active", limit: 40000, balance: 27800, due: 2780, dueDate: "2026-10-09", expiry: "08/28", rewards: "15,900 pts" },
-      { issuer: "Viesca", product: "Viesca Everyday Credit", network: "Mastercard", last4: "2278", type: "Credit", status: "Expired", limit: 12000, balance: 0, due: 0, dueDate: null, expiry: "08/26", rewards: "—" },
+      { issuer: "Viseca", product: "Viseca Everyday Credit", network: "Mastercard", last4: "2278", type: "Credit", status: "Expired", limit: 12000, balance: 0, due: 0, dueDate: null, expiry: "08/26", rewards: "—" },
     ],
   },
   {
     id: "C-1004", name: "Daniel Moreau", phone: "+971506789012", email: "daniel.moreau@example.com",
     dob: "1985-09-21", city: "Dubai", segment: "Premium", since: "2014-05-27", language: "English",
     cards: [
-      { issuer: "Viesca", product: "Viesca Signature Credit", network: "Visa", last4: "5540", type: "Credit", status: "Active", limit: 90000, balance: 41200, due: 4120, dueDate: "2026-10-15", expiry: "12/29", rewards: "58,400 pts" },
+      { issuer: "Viseca", product: "Viseca Signature Credit", network: "Visa", last4: "5540", type: "Credit", status: "Active", limit: 90000, balance: 41200, due: 4120, dueDate: "2026-10-15", expiry: "12/29", rewards: "58,400 pts" },
     ],
   },
   {
@@ -59,7 +59,7 @@ const CUSTOMERS = [
     cards: [
       { issuer: "Manor", product: "Manor Infinite Credit", network: "Visa", last4: "0007", type: "Credit", status: "Active", limit: 250000, balance: 96500, due: 9650, dueDate: "2026-10-20", expiry: "04/30", rewards: "212,000 pts" },
       { issuer: "Valiant", product: "Valiant Black Credit", network: "Mastercard", last4: "1919", type: "Credit", status: "Active", limit: 180000, balance: 22300, due: 2230, dueDate: "2026-10-14", expiry: "10/29", rewards: "88,750 miles" },
-      { issuer: "Viesca", product: "Viesca Business Debit", network: "Visa", last4: "3042", type: "Debit", status: "Active", limit: 50000, balance: 0, due: 0, dueDate: null, expiry: "02/28", rewards: "—" },
+      { issuer: "Viseca", product: "Viseca Business Debit", network: "Visa", last4: "3042", type: "Debit", status: "Active", limit: 50000, balance: 0, due: 0, dueDate: null, expiry: "02/28", rewards: "—" },
       { issuer: "Cumulus", product: "Cumulus Elite Credit", network: "Mastercard", last4: "6276", type: "Credit", status: "Pending activation", limit: 100000, balance: 0, due: 0, dueDate: null, expiry: "09/31", rewards: "—" },
     ],
   },
@@ -89,14 +89,14 @@ const SEED_INTERACTIONS = [
   { phone: "+919555594511", issuer: "Manor",   channel: "Voice",    reason: "PIN reset",             outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 1,  hour: 10, notes: "Debit card PIN reset via IVR hand-off." },
   { phone: "+34695930506", issuer: "Manor",   channel: "Email",    reason: "Cashback query",        outcome: "Resolved",  agent: "Karim A.",  daysAgo: 25, hour: 13, notes: "Explained cashback cap of AED 500/month." },
   { phone: "+201025266022", issuer: "Valiant", channel: "Voice",    reason: "Late fee waiver",       outcome: "Pending",   agent: "Rami T.",   daysAgo: 4,  hour: 16, notes: "Requested waiver of AED 250 late fee. Awaiting supervisor approval." },
-  { phone: "+201025266022", issuer: "Viesca",  channel: "WhatsApp", reason: "Card renewal",          outcome: "Pending",   agent: "Hind B.",   daysAgo: 9,  hour: 12, notes: "Card expired Aug 2026. Customer unsure if renewal is wanted." },
-  { phone: "+34695930506", issuer: "Viesca",  channel: "Chat",     reason: "Travel notice",         outcome: "Resolved",  agent: "Hind B.",   daysAgo: 2,  hour: 8,  notes: "Travelling to UK 10-20 Oct. Travel flag added." },
+  { phone: "+201025266022", issuer: "Viseca",  channel: "WhatsApp", reason: "Card renewal",          outcome: "Pending",   agent: "Hind B.",   daysAgo: 9,  hour: 12, notes: "Card expired Aug 2026. Customer unsure if renewal is wanted." },
+  { phone: "+34695930506", issuer: "Viseca",  channel: "Chat",     reason: "Travel notice",         outcome: "Resolved",  agent: "Hind B.",   daysAgo: 2,  hour: 8,  notes: "Travelling to UK 10-20 Oct. Travel flag added." },
   { phone: "+971505678901", issuer: "Cumulus", channel: "Voice",    reason: "Activate card",         outcome: "Resolved",  agent: "Lina M.",   daysAgo: 30, hour: 14, notes: "New card activated after identity verification." },
   { phone: "+971506789012", issuer: "Manor",   channel: "Voice",    reason: "Reward redemption",     outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 5,  hour: 17, notes: "Redeemed 40,000 pts for statement credit." },
   { phone: "+971506789012", issuer: "Cumulus", channel: "Voice",    reason: "Activate card",         outcome: "Follow-up", agent: "Lina M.",   daysAgo: 1,  hour: 19, notes: "Failed OTP twice. Customer to call back from registered mobile." },
   { phone: "+971506789012", issuer: "Valiant", channel: "Email",    reason: "Fee dispute",           outcome: "Resolved",  agent: "Rami T.",   daysAgo: 14, hour: 10, notes: "Annual fee reversed as a goodwill gesture." },
   { phone: "+971507890123", issuer: "Manor",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
  { phone: "+971581804748", issuer: "Valiant", channel: "Email",    reason: "Fee dispute",           outcome: "Resolved",  agent: "Rami T.",   daysAgo: 14, hour: 10, notes: "Annual fee reversed as a goodwill gesture." },
-  { phone: "+971581804748", issuer: "Viesca",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
+  { phone: "+971581804748", issuer: "Viseca",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
   { phone: "+971508901234", issuer: "Valiant", channel: "Voice",    reason: "Over-limit",            outcome: "Follow-up", agent: "Rami T.",   daysAgo: 1,  hour: 14, notes: "Account over limit and payment overdue. Promised payment by Friday." },
 ];
