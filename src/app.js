@@ -84,9 +84,9 @@ function renderInteraction(i) {
 }
 
 function renderLanding(msg) {
-  document.title = "Card CRM";
+  document.title = "TP Banking CRM";
   $app.innerHTML = `
-  <header class="top"><h1>Card CRM</h1><span class="sub">Contact-centre customer view</span></header>
+  <header class="top"><h1>TP Banking CRM</h1><span class="sub">Contact-centre customer view</span></header>
   <div class="landing">
     ${msg ? `<div class="panel" style="margin-bottom:20px;border-color:var(--bad)"><b>${msg}</b></div>` : ""}
     <div class="panel">
@@ -111,13 +111,13 @@ function renderCustomer(cust, ch) {
   const cards = cust.cards.filter((c) => issuers.includes(c.issuer));
   const history = allInteractions().filter((i) => digits(i.phone) === digits(cust.phone) && issuers.includes(i.issuer));
   const initials = cust.name.split(" ").map((p) => p[0]).slice(0, 2).join("");
-  document.title = `${cust.name} · ${label} · Card CRM`;
+  document.title = `${cust.name} · ${label} · TP Banking CRM`;
   document.documentElement.style.setProperty("--accent", iss.color);
   document.documentElement.style.setProperty("--tint", iss.tint);
 
   $app.innerHTML = `
   <header class="top">
-    <h1>Card CRM</h1><span class="chip">Contacted via ${esc(label)}</span>
+    <h1>TP Banking CRM</h1><span class="chip">Contacted via ${esc(label)}</span>
     <span class="sub">Showing ${ch.all ? "data for all issuers" : esc(label) + " data only"}</span>
   </header>
   <main>
