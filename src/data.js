@@ -17,7 +17,7 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1002", name: "Sameer Misger", phone: "+919555594511", email: "misgersam@gmail.com",
+    id: "C-1002", name: "Sameer Misger", phone: "+919555594511", email: "sameer.misger@istnetworks.com",
     dob: "1979-11-30", city: "Abu Dhabi", segment: "Standard", since: "2019-07-19", language: "Arabic",
     cards: [
       { issuer: "Manor", product: "Manor Classic Debit", network: "Visa", last4: "1156", type: "Debit", status: "Active", limit: 15000, balance: 0, due: 0, dueDate: null, expiry: "06/28", rewards: "—" },
