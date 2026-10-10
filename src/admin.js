@@ -109,13 +109,19 @@ function renderInteractions() {
 function renderData() {
   root.querySelector("#pane").innerHTML = `
   <div class="panel"><h2>Raw data</h2>
-    <p style="color:var(--muted);margin-top:0">Edit everything as JSON, or export/import it to share a dataset.</p>
+    <p style="color:var(--muted);margin-top:0">Edit everything as JSON, or export/import it. The web service <code>/api/customer</code> serves the server's copy: press <b>Publish to API</b> to send your browser's current data there.</p>
     <textarea id="raw" style="min-height:380px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px">${esc(JSON.stringify(DB.data, null, 2))}</textarea>
-    <div class="row-actions"><button id="applyRaw">Apply JSON</button><button class="secondary" id="export">Download JSON</button>
+    <div class="row-actions"><button id="applyRaw">Apply JSON</button><button id="publish" title="Send the current data to the server so /api/customer returns it">Publish to API</button><button class="secondary" id="export">Download JSON</button>
       <span style="flex:1"></span><button class="danger" id="reset">Reset to original mock data</button></div></div>`;
   document.getElementById("applyRaw").onclick = () => {
     try { const d = JSON.parse(document.getElementById("raw").value); if (!Array.isArray(d.customers) || !Array.isArray(d.interactions)) throw 0; DB.replace(d); toast("Applied"); }
     catch { alert("Invalid JSON: need an object with \"customers\" and \"interactions\" arrays."); }
+  };
+  document.getElementById("publish").onclick = async () => {
+    try {
+      const r = await fetch("/api/data", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(DB.data) });
+      if (!r.ok) throw new Error(); toast("Published to API");
+    } catch { alert("Could not reach the server. Start it with: node server.js"); }
   };
   document.getElementById("export").onclick = () => {
     const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(DB.data, null, 2)], { type: "application/json" })); a.download = "card-crm-data.json"; a.click();

@@ -83,7 +83,7 @@ function renderInteraction(i) {
   </li>`;
 }
 
-function renderLanding(msg) {
+function renderLanding(msg, channelVal = "") {
   document.title = "TP Banking CRM";
   $app.innerHTML = `
   <header class="top"><h1>TP Banking CRM</h1><span class="sub">Contact-centre customer view</span></header>
@@ -93,15 +93,61 @@ function renderLanding(msg) {
       <h2>Look up a customer</h2>
       <form method="get">
         <input name="phone" placeholder="Phone or email, e.g. +971501234567" required>
-        <input name="channel" list="chs" value="ALL" required placeholder="Manor,Valiant or ALL"><datalist id="chs"><option>ALL</option>${Object.keys(ISSUERS).map((k) => `<option>${k}</option>`).join("")}</datalist>
+        <input name="channel" value="${esc(channelVal)}" readonly tabindex="-1" placeholder="Channel (from URL)" title="Set by the channel URL parameter">
         <button>Open</button>
       </form>
       <p style="color:var(--muted);font-size:13px;margin-bottom:0">Normally the contact-centre softphone opens this page with
       <code>?phone=…&amp;channel=Manor</code> (the <code>phone</code> value can be a phone number or an email).
       Channel can be one issuer, several comma-separated (<code>Manor,Valiant</code>) or <code>ALL</code>; only those issuers' cards and interactions are shown.</p>
     </div>
-    ${msg ? "" : `<p style="text-align:center;font-size:13px"><a href="demos.html">Browse demo customers</a> · <a href="admin.html">Edit mock data</a></p>`}
   </div>`;
+  const form = $app.querySelector("form");
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    const f = Object.fromEntries(new FormData(form));
+    const ch = parseChannels(f.channel);
+    if (!ch.issuers.length || ch.bad.length) return renderLanding(`Unknown or missing channel “${esc(ch.bad.join(", ") || f.channel || "")}”. Use ALL or one or more of: ${Object.keys(ISSUERS).join(", ")} (comma separated).`, f.channel);
+    const cust = findCustomer(f.phone);
+    if (!cust) return renderLanding(`No customer found for “${esc(f.phone)}”.`, f.channel);
+    openOtpDialog(cust, f.phone, f.channel);
+  };
+}
+
+// Mock customer verification: an SMS "is sent" to the registered number; only OTP 1122 passes.
+const MOCK_OTP = "1122";
+function openOtpDialog(cust, typed, channel) {
+  const tail = digits(cust.phone).slice(-4);
+  const masked = cust.phone.replace(/\d(?=\d{0,3}$)/g, (d) => d).replace(/\d/g, (d, i, str) => (i >= str.length - 4 ? d : "•"));
+  const el = document.createElement("div");
+  el.className = "modal-bg";
+  el.innerHTML = `
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="otpTitle">
+    <h3 id="otpTitle">Verify customer</h3>
+    <p class="muted">An SMS with a one-time password was sent to the customer's registered number <b>${esc(masked)}</b>.</p>
+    <div class="sms"><div class="sms-hd">SMS to ${esc(masked)} · just now</div>
+      Your verification code is <b>••••</b>. Do not share it with anyone. Valid for 5 minutes.</div>
+    <p class="muted small">Ask the customer to read out the code. (Demo: the code is ${MOCK_OTP}.)</p>
+    <form id="otpForm">
+      <input name="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Enter OTP" autofocus required>
+      <div class="otp-err" id="otpErr" role="alert"></div>
+      <div class="actions"><button type="button" class="secondary" id="otpCancel">Cancel</button><button>Verify &amp; search</button></div>
+    </form>
+  </div>`;
+  document.body.appendChild(el);
+  const close = () => el.remove();
+  const input = el.querySelector("input");
+  input.focus();
+  el.querySelector("#otpCancel").onclick = close;
+  el.onclick = (e) => { if (e.target === el) close(); };
+  el.querySelector("#otpForm").onsubmit = (e) => {
+    e.preventDefault();
+    if (input.value.trim() === MOCK_OTP) {
+      location.search = "?" + new URLSearchParams({ phone: typed, channel }).toString();
+    } else {
+      el.querySelector("#otpErr").textContent = "Invalid OTP. Please try again.";
+      input.value = ""; input.focus();
+    }
+  };
 }
 
 function renderCustomer(cust, ch) {
@@ -175,10 +221,10 @@ function renderCustomer(cust, ch) {
 (function init() {
   const q = new URLSearchParams(location.search);
   const phone = q.get("phone"), channel = q.get("channel");
-  if (!phone && !channel) return renderLanding();
+  if (!phone) return renderLanding(undefined, channel || "");
   const ch = parseChannels(channel);
-  if (!ch.issuers.length || ch.bad.length) return renderLanding(`Unknown or missing channel “${esc(ch.bad.join(", ") || channel || "")}”. Use ALL or one or more of: ${Object.keys(ISSUERS).join(", ")} (comma separated).`);
+  if (!ch.issuers.length || ch.bad.length) return renderLanding(`Unknown or missing channel “${esc(ch.bad.join(", ") || channel || "")}”. Use ALL or one or more of: ${Object.keys(ISSUERS).join(", ")} (comma separated).`, channel || "");
   const cust = findCustomer(phone);
-  if (!cust) return renderLanding(`No customer found for “${esc(phone || "")}”.`);
+  if (!cust) return renderLanding(`No customer found for “${esc(phone || "")}”.`, channel || "");
   renderCustomer(cust, ch);
 })();

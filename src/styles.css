@@ -85,3 +85,15 @@ form.log .actions { grid-column: 1 / -1; display: flex; gap: 8px; justify-conten
 .landing th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; border-top: 0; }
 .landing td a { margin-right: 8px; font-weight: 600; text-decoration: none; }
 code { background: var(--neutral-bg); padding: 1px 6px; border-radius: 5px; font-size: 13px; }
+
+/* OTP dialog */
+.modal-bg { position: fixed; inset: 0; background: rgba(15,20,32,.55); display: grid; place-items: center; z-index: 50; padding: 16px; }
+.modal { background: var(--surface); color: var(--text); border-radius: 14px; padding: 22px; width: 100%; max-width: 400px; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+.modal h3 { margin: 0 0 6px; font-size: 18px; }
+.modal .muted { color: var(--muted); margin: 6px 0 12px; font-size: 14px; }
+.modal .small { font-size: 12.5px; margin-top: 10px; }
+.sms { background: var(--tint); border-radius: 12px 12px 12px 3px; padding: 10px 14px; font-size: 14px; }
+.sms-hd { font-size: 11.5px; color: var(--muted); margin-bottom: 4px; }
+.modal input { font-size: 18px; letter-spacing: .3em; text-align: center; }
+.otp-err { color: var(--bad); font-size: 13px; min-height: 20px; margin-top: 6px; font-weight: 600; }
+.modal .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
