@@ -25,14 +25,14 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1003", name: "Mohamed Khaled", phone: "+201025266022", email: "mohamed.khaled@istnetworks.com",
+    id: "C-1003", name: "Mohamed Khaled", phone: "+201025266022", email: "mohamedkhaled783@gmail.com",
     dob: "1992-02-08", city: "Sharjah", segment: "Standard", since: "2021-01-15", language: "English / Hindi",
     cards: [
       { issuer: "Valiant", product: "Valiant Platinum Credit", network: "Visa", last4: "6602", type: "Credit", status: "Active", limit: 40000, balance: 27800, due: 2780, dueDate: "2026-10-09", expiry: "08/28", rewards: "15,900 pts" },
       { issuer: "Viseca", product: "Viseca Everyday Credit", network: "Mastercard", last4: "2278", type: "Credit", status: "Expired", limit: 12000, balance: 0, due: 0, dueDate: null, expiry: "08/26", rewards: "—" },
     ],
   },{
-    id: "C-1003", name: "Mohamed Esawi", phone: "+971581804748", email: "mohamedkhaled783@gmail.com",
+    id: "C-1003", name: "Mohamed Esawi", phone: "+971581804748", email: "mohamed.esawi@istnetworks.com",
     dob: "1992-02-08", city: "Sharjah", segment: "Standard", since: "2021-01-15", language: "English / Hindi",
     cards: [
       { issuer: "Valiant", product: "Valiant Platinum Credit", network: "Visa", last4: "6602", type: "Credit", status: "Active", limit: 40000, balance: 27800, due: 2780, dueDate: "2026-10-09", expiry: "08/28", rewards: "15,900 pts" },
