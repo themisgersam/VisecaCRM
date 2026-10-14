@@ -78,6 +78,16 @@ const CUSTOMERS = [
       { issuer: "Valiant", product: "Valiant Classic Credit", network: "Visa", last4: "3381", type: "Credit", status: "Active", limit: 15000, balance: 15400, due: 2400, dueDate: "2026-09-28", expiry: "11/28", rewards: "1,200 pts" },
     ],
   },
+  {
+    id: "C-1009", name: "Farida Montesser", phone: "+201011149481", email: "farida.montasser@istnetworks.com",
+    dob: "1983-07-14", city: "Ras Al Khaimah", segment: "Standard", since: "2022-02-20", language: "English",
+    cards: [
+      { issuer: "Manor", product: "Manor Infinite Credit", network: "Visa", last4: "0007", type: "Credit", status: "Active", limit: 250000, balance: 96500, due: 9650, dueDate: "2026-10-20", expiry: "04/30", rewards: "212,000 pts" },
+      { issuer: "Valiant", product: "Valiant Black Credit", network: "Mastercard", last4: "1919", type: "Credit", status: "Active", limit: 180000, balance: 22300, due: 2230, dueDate: "2026-10-14", expiry: "10/29", rewards: "88,750 miles" },
+      { issuer: "Viseca", product: "Viseca Business Debit", network: "Visa", last4: "3042", type: "Debit", status: "Active", limit: 50000, balance: 0, due: 0, dueDate: null, expiry: "02/28", rewards: "—" },
+      { issuer: "Cumulus", product: "Cumulus Elite Credit", network: "Mastercard", last4: "6276", type: "Credit", status: "Pending activation", limit: 100000, balance: 0, due: 0, dueDate: null, expiry: "09/31", rewards: "—" },
+    ],
+  },
 ];
 
 // Seed interactions. `daysAgo` / `hour` are converted to real timestamps at load time.
@@ -99,4 +109,8 @@ const SEED_INTERACTIONS = [
  { phone: "+971581804748", issuer: "Valiant", channel: "Email",    reason: "Fee dispute",           outcome: "Resolved",  agent: "Rami T.",   daysAgo: 14, hour: 10, notes: "Annual fee reversed as a goodwill gesture." },
   { phone: "+971581804748", issuer: "Viseca",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
   { phone: "+971508901234", issuer: "Valiant", channel: "Voice",    reason: "Over-limit",            outcome: "Follow-up", agent: "Rami T.",   daysAgo: 1,  hour: 14, notes: "Account over limit and payment overdue. Promised payment by Friday." },
+ { phone: "+201011149481", issuer: "Valiant", channel: "Email",    reason: "Fee dispute",           outcome: "Resolved",  agent: "Rami T.",   daysAgo: 14, hour: 10, notes: "Annual fee reversed as a goodwill gesture." },
+  { phone: "+201011149481", issuer: "Viseca",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
+  { phone: "+201011149481", issuer: "Valiant", channel: "Voice",    reason: "Over-limit",            outcome: "Follow-up", agent: "Rami T.",   daysAgo: 1,  hour: 14, notes: "Account over limit and payment overdue. Promised payment by Friday." },
+
 ];
