@@ -79,7 +79,7 @@ const CUSTOMERS = [
     ],
   },
   {
-    id: "C-1009", name: "Farida Montesser", phone: "+201011149481", email: "farida.montasser@istnetworks.com",
+    id: "C-1009", name: "Farida Montesser", phone: "+4915129758702", email: "farida.montasser@istnetworks.com",
     dob: "1983-07-14", city: "Ras Al Khaimah", segment: "Standard", since: "2022-02-20", language: "English",
     cards: [
       { issuer: "Manor", product: "Manor Infinite Credit", network: "Visa", last4: "0007", type: "Credit", status: "Active", limit: 250000, balance: 96500, due: 9650, dueDate: "2026-10-20", expiry: "04/30", rewards: "212,000 pts" },
