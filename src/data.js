@@ -83,7 +83,7 @@ const CUSTOMERS = [
     dob: "1983-07-14", city: "Ras Al Khaimah", segment: "Standard", since: "2022-02-20", language: "English",
     cards: [
       { issuer: "Manor", product: "Manor Infinite Credit", network: "Visa", last4: "0007", type: "Credit", status: "Active", limit: 250000, balance: 96500, due: 9650, dueDate: "2026-10-20", expiry: "04/30", rewards: "212,000 pts" },
-      { issuer: "Valiant", product: "Valiant Black Credit", network: "Mastercard", last4: "1919", type: "Credit", status: "Active", limit: 180000, balance: 22300, due: 2230, dueDate: "2026-10-14", expiry: "10/29", rewards: "88,750 miles" },
+      { issuer: "Viseca", product: "Viseca Black Credit", network: "Mastercard", last4: "1919", type: "Credit", status: "Active", limit: 180000, balance: 22300, due: 2230, dueDate: "2026-10-14", expiry: "10/29", rewards: "88,750 miles" },
       { issuer: "Viseca", product: "Viseca Business Debit", network: "Visa", last4: "3042", type: "Debit", status: "Active", limit: 50000, balance: 0, due: 0, dueDate: null, expiry: "02/28", rewards: "—" },
       { issuer: "Cumulus", product: "Cumulus Elite Credit", network: "Mastercard", last4: "6276", type: "Credit", status: "Pending activation", limit: 100000, balance: 0, due: 0, dueDate: null, expiry: "09/31", rewards: "—" },
     ],
