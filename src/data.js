@@ -21,7 +21,7 @@ const CUSTOMERS = [
     dob: "1979-11-30", city: "Abu Dhabi", segment: "Standard", since: "2019-07-19", language: "Arabic",
     cards: [
       { issuer: "Manor", product: "Manor Classic Debit", network: "Visa", last4: "1156", type: "Debit", status: "Active", limit: 15000, balance: 0, due: 0, dueDate: null, expiry: "06/28", rewards: "—" },
-      { issuer: "Manor", product: "Manor Cashback Credit", network: "Mastercard", last4: "3394", type: "Credit", status: "Active", limit: 20000, balance: 8740, due: 874, dueDate: "2026-10-12", expiry: "01/29", rewards: "AED 312 cashback" },
+      { issuer: "Manor", product: "Manor Cashback Credit", network: "Mastercard", last4: "3394", type: "Credit", status: "Active", limit: 20000, balance: 8740, due: 874, dueDate: "2026-10-12", expiry: "01/29", rewards: "CHF 312 cashback" },
     ],
   },
   {
@@ -92,13 +92,13 @@ const CUSTOMERS = [
 
 // Seed interactions. `daysAgo` / `hour` are converted to real timestamps at load time.
 const SEED_INTERACTIONS = [
-  { phone: "+12028666945", issuer: "Manor",   channel: "Voice",    reason: "Statement query",       outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 3,  hour: 11, notes: "Customer asked about a duplicate charge of AED 189 at a restaurant. Raised dispute DSP-20931." },
-  { phone: "+12028666945", issuer: "Manor",   channel: "Chat",     reason: "Credit limit increase", outcome: "Escalated", agent: "Karim A.",  daysAgo: 12, hour: 15, notes: "Requested limit increase to AED 80,000. Escalated to credit team." },
+  { phone: "+12028666945", issuer: "Manor",   channel: "Voice",    reason: "Statement query",       outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 3,  hour: 11, notes: "Customer asked about a duplicate charge of CHF 189 at a restaurant. Raised dispute DSP-20931." },
+  { phone: "+12028666945", issuer: "Manor",   channel: "Chat",     reason: "Credit limit increase", outcome: "Escalated", agent: "Karim A.",  daysAgo: 12, hour: 15, notes: "Requested limit increase to CHF 80,000. Escalated to credit team." },
   { phone: "+12028666945", issuer: "Valiant", channel: "Voice",    reason: "Payment arrangement",   outcome: "Resolved",  agent: "Rami T.",   daysAgo: 6,  hour: 9,  notes: "Set up standing instruction for minimum due." },
   { phone: "+12028666945", issuer: "Cumulus", channel: "Voice",    reason: "Block card",            outcome: "Resolved",  agent: "Lina M.",   daysAgo: 20, hour: 18, notes: "Card reported lost while travelling. Blocked; replacement not requested yet." },
   { phone: "+919555594511", issuer: "Manor",   channel: "Voice",    reason: "PIN reset",             outcome: "Resolved",  agent: "Nadia S.",  daysAgo: 1,  hour: 10, notes: "Debit card PIN reset via IVR hand-off." },
-  { phone: "+34695930506", issuer: "Manor",   channel: "Email",    reason: "Cashback query",        outcome: "Resolved",  agent: "Karim A.",  daysAgo: 25, hour: 13, notes: "Explained cashback cap of AED 500/month." },
-  { phone: "+201025266022", issuer: "Valiant", channel: "Voice",    reason: "Late fee waiver",       outcome: "Pending",   agent: "Rami T.",   daysAgo: 4,  hour: 16, notes: "Requested waiver of AED 250 late fee. Awaiting supervisor approval." },
+  { phone: "+34695930506", issuer: "Manor",   channel: "Email",    reason: "Cashback query",        outcome: "Resolved",  agent: "Karim A.",  daysAgo: 25, hour: 13, notes: "Explained cashback cap of CHF 500/month." },
+  { phone: "+201025266022", issuer: "Valiant", channel: "Voice",    reason: "Late fee waiver",       outcome: "Pending",   agent: "Rami T.",   daysAgo: 4,  hour: 16, notes: "Requested waiver of CHF 250 late fee. Awaiting supervisor approval." },
   { phone: "+201025266022", issuer: "Viseca",  channel: "WhatsApp", reason: "Card renewal",          outcome: "Pending",   agent: "Hind B.",   daysAgo: 9,  hour: 12, notes: "Card expired Aug 2026. Customer unsure if renewal is wanted." },
   { phone: "+34695930506", issuer: "Viseca",  channel: "Chat",     reason: "Travel notice",         outcome: "Resolved",  agent: "Hind B.",   daysAgo: 2,  hour: 8,  notes: "Travelling to UK 10-20 Oct. Travel flag added." },
   { phone: "+971505678901", issuer: "Cumulus", channel: "Voice",    reason: "Activate card",         outcome: "Resolved",  agent: "Lina M.",   daysAgo: 30, hour: 14, notes: "New card activated after identity verification." },
