@@ -1,8 +1,8 @@
 // Mock data for the card-management CRM. All data is fictional.
 const ISSUERS = {
-  Manor:   { color: "#1f4e9c", tint: "#e8effa", tagline: "Manor Bank Cards" },
+  Manor:   { color: "#8A1D36", tint: "#B87786", tagline: "Manor Bank Cards" },
   Valiant: { color: "#8a1c2b", tint: "#f9e9eb", tagline: "Valiant Bank Cards" },
-  Viseca:  { color: "#0b7a5c", tint: "#e4f5ef", tagline: "Viseca Bank Cards" },
+  Viseca:  { color: "#f69f29", tint: "#fac57f", tagline: "Viseca Bank Cards" },
   Cumulus: { color: "#5b3fb5", tint: "#eee9fa", tagline: "Cumulus Bank Cards" },
 };
 
