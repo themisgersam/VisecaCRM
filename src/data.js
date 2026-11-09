@@ -112,5 +112,7 @@ const SEED_INTERACTIONS = [
  { phone: "+201011149481", issuer: "Valiant", channel: "Email",    reason: "Fee dispute",           outcome: "Resolved",  agent: "Rami T.",   daysAgo: 14, hour: 10, notes: "Annual fee reversed as a goodwill gesture." },
   { phone: "+201011149481", issuer: "Viseca",   channel: "Voice",    reason: "Payment due date",      outcome: "Resolved",  agent: "Karim A.",  daysAgo: 2,  hour: 12, notes: "Customer wants due date moved to the 20th. Requested; effective next cycle." },
   { phone: "+201011149481", issuer: "Valiant", channel: "Voice",    reason: "Over-limit",            outcome: "Follow-up", agent: "Rami T.",   daysAgo: 1,  hour: 14, notes: "Account over limit and payment overdue. Promised payment by Friday." },
+    { phone: "+4915129758702", issuer: "Viseca",   channel: "Voice",     reason: "Credit limit increase", outcome: "Resolved", agent: "Agent1 Viseca",  daysAgo: 12, hour: 15, notes: "Requested limit increase to and followed the increase limit process." },
+
 
 ];
